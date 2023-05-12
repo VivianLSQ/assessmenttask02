@@ -1,9 +1,11 @@
 package sg.edu.nus.iss;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
@@ -46,17 +48,16 @@ public class wordDistribution {
 
         // Analyse distribution
          // Use TreeMap + Comparator (or HashMap) and loop to count next word distribution 
-                //key is first word; value is subsequent word 
+                //key is word value is count
                 //Then use the compute() method to compute the value 
                 //And calculate the probability of the next word occuring 
                     //Conditional probability (given first word, count 2nd word prob)
                     //if-else? 
                     //Markov's chain? 
-        //Step 1: Randomly choose a word
-            //Count word frequency in a String using a frequency class object
-        //Step 2: Append word chosen from set of words and their probabilities
-        //Step 3: Repeat process 
-        String text = File.readString ("/Users/Vivian/Downloads/texts"); 
+
+        //Count occurrence of word 
+        Path path = Paths.get("/Users/Vivian/Downloads/texts"); 
+        String text = Files.readString(path); 
         Map<String, Integer> freqCounterMap = new TreeMap<>();
         Pattern pattern = Pattern.compile("[a-z]+");
         Matcher matcher = pattern.matcher(text); 
@@ -70,9 +71,12 @@ public class wordDistribution {
             }else{
                 //new word
                 int count = 1; 
-                freqCounterMap.put(word, count); 
+                freqCounterMap.put(word2, count); 
             }
         }//end of while loop
+    
+
+
 
         wordScanner.close(); 
         br.close(); 

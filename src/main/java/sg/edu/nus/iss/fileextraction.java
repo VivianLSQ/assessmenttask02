@@ -16,11 +16,15 @@ public class fileextraction {
 
     public void unzip (String zipFilePath, String destDirectory) throws IOException{
         File destDir = new File(destDirectory); 
+
         if(!destDir.exists()){
             destDir.mkdir(); }
+            //String destDir = "/Users/Vivian/Downloads/VSC_Projects/assessmenttask02/src/main/java/sg/edu/nus/iss/"; 
             zipFilePath = "/Users/Vivian/Downloads/VSC_Projects/assessmenttask02/src/main/java/sg/edu/nus/iss/texts_2023_05_07-08_53_44.zip"; 
+
             ZipInputStream zis= new ZipInputStream(new FileInputStream(zipFilePath)); 
             ZipEntry entry = zis.getNextEntry();
+
             //Iterate over file content 
             while(entry != null){
                 String filePath = destDirectory + File.separator + entry.getName(); 
@@ -37,6 +41,8 @@ public class fileextraction {
         }
 
     private void extractFile(ZipInputStream zis, String filePath) throws IOException{
+        //use FileOutputStream to write ZipEntry to file system
+        //Need to create output directory if it doesnt exist and for nested directories too
         BufferedOutputStream bos = new BufferedOutputStream (new FileOutputStream(filePath));
         byte[]bytesIn = new byte[bufferSize]; 
         int read =0;
