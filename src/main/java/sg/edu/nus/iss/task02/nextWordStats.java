@@ -1,4 +1,4 @@
-package sg.edu.nus.iss;
+package sg.edu.nus.iss.task02;
 
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -11,8 +11,29 @@ import java.util.TreeMap;
      //key is first word; value is subsequent word 
      //Use MultiSet? 
 
-public class nextWordStats extends wordDistribution {
+public class nextWordStats {
 
+    public static String getNextWord(String str, String word) {
+        String nextWord = "";
+        str = str.trim().replaceAll("\\p{Punct}", " ");
+        int totalLength = str.length();
+        int wordStartIndex = str.indexOf(word);
+        if (wordStartIndex != -1) {
+            int startPos = wordStartIndex + word.length() + 1;
+            if (startPos < totalLength) {
+                int nextSpaceIndex = str.substring(startPos).indexOf(" ");
+                int endPos = 0;
+                if (nextSpaceIndex == -1) {
+                    // Reach end of line 
+                    endPos = totalLength;
+                } else {
+                    endPos = startPos + nextSpaceIndex;
+                }
+                nextWord = str.substring(startPos, endPos);
+            }
+        }
+        return nextWord;
+    }
 
 HashMap<String, TreeMap<String, Float>> chain; 
     Set<String> known_wordSet;

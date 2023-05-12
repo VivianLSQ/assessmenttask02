@@ -1,4 +1,4 @@
-package sg.edu.nus.iss;
+package sg.edu.nus.iss.task02;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -75,7 +75,6 @@ public class wordDistribution {
             }
         }//end of while loop
     
-
 
 
         wordScanner.close(); 

@@ -1,4 +1,4 @@
-package sg.edu.nus.iss;
+package sg.edu.nus.iss.task02;
 
 import java.io.File;
 
@@ -21,7 +21,7 @@ public class fileDirSetup
         displaySubDirectoryFiles(mainDir); 
     }
     //Note: directory name is to be the Text folder --> Aim is to know how to read sub directory 
-    //Use getCanonicalPath to read txt files in sub-directories 
+    //Use getCanonicalPath method to read txt files in sub-directories 
     public static void displaySubDirectoryFiles(File dir){
         try{
             File[] files = dir.listFiles();

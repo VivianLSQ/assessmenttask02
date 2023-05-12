@@ -1,4 +1,4 @@
-package sg.edu.nus.iss;
+package sg.edu.nus.iss.task02;
 
 import java.io.File;
 import java.io.FileInputStream;
